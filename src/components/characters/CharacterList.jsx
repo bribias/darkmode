@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import Character from './Character';
+import CharacterDetail from './CharacterDetail';
 
 const CharacterList = ({ name, image }) => (
  
@@ -12,7 +12,7 @@ const CharacterList = ({ name, image }) => (
     </button>
 );
 
-Character.propTypes = {
+CharacterDetail.propTypes = {
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired
 }
