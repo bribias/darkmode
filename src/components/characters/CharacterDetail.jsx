@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoading, useSetLoading, useSetCharacter, useCharacter } from '../../hooks/CharacterProvider';
 import { useParams } from 'react-router';
 import { fetchOneCharacter } from '../../services/heyArnoldAPI';

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CharacterList from './CharacterList';
 import { fetchCharacters } from '../../services/heyArnoldAPI';
+import { Link } from 'react-router-dom';
 import { useLoading, useSetLoading, useCharacters, useSetCharacters } from '../../hooks/CharacterProvider';
 
 const ListOfCharacters = () => {
