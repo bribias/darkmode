@@ -1,10 +1,19 @@
 import React from 'react';
 import CharacterList from './CharacterList';
-import { Link } from 'react-router-dom';
-import { useEvents } from '../../hooks/useEvents';
+import { fetchCharacters } from '../../services/heyArnoldAPI';
+import { useLoading, useSetLoading, useCharacters, useSetCharacters } from '../../hooks/CharacterProvider';
 
 const ListOfCharacters = () => {
-    const { characters, loading } = useEvents();
+    const loading = useLoading();
+    const setLoading = useSetLoading();
+    const characters = useCharacters();
+    const setCharacters = useSetCharacters();
+
+    useEffect(() => {
+        fetchCharacters()
+            .then((charactersArray) => setCharacters(charactersArray))
+            .then(() => setLoading(false));
+    }, []);
 
     if (loading)
         return (
@@ -12,7 +21,7 @@ const ListOfCharacters = () => {
         );
     
     return (
-        <ul aria-label="character-list">
+        <ul role ="list" aria-label="character-list">
             {characters.map((character) => (
                 <Link key={character.id} to={`${character.id}`}>
                     <li key={character.id}>
